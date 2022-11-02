@@ -1,15 +1,15 @@
 Package: stp25settings
 Type: Package
 Title: settings stp25stat2
-Version: 0.1.2
+Version: 0.1.3
 Author: Wolfgang Peter
 Maintainer: Wolfgang Peter <w.peter@statistik-peter.at>
 Description: Einstellungen fuer die Formatierung der Tabellen. Lattice settings und Farben.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
-Date: 2022-03-07
+RoxygenNote: 7.2.1
+Date: 2022-09-16
 Suggests:
   knitr,
   dplyr,

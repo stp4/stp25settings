@@ -1,7 +1,9 @@
+# -  Loeschkandidat ------------------------------------------------------------
+
+
 #'  Automatisches Uebersetzen
 #'
 #' @param x name nin get_lang
-#' @export
 get_lang <- function(x = NULL) {
   lng <- stp25.getLanguage()
   if (is.null(x))
@@ -13,7 +15,6 @@ get_lang <- function(x = NULL) {
 
 #' @rdname get_lang
 #' @param ... alles an set_lang
-#' @export
 set_lang <- function(...) {
   new <- list(...)
   if(length(new)== 0) stp25.language("de")
@@ -24,7 +25,6 @@ set_lang <- function(...) {
 
 
 #' @rdname get_lang
-#' @export
 delet_lang <- function(...) {
   .stp25Env$stp25.language <- NULL
 }
@@ -57,8 +57,7 @@ stp25.language <- function(...){
 
 #' @rdname get_lang
 #' @param replace in Names2Language
-#' @description Names2Language() wird von Output benutzt um die De/En Uebersaetzung durchzufuehren.
-#' @export
+#' @description Names2Language() wurde von Output benutzt um die De/En Uebersaetzung durchzufuehren.
 Names2Language <- function(x, replace) {
   if (is.null(replace))  return(x)
   plyr::mapvalues(x,
