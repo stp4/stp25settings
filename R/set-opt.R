@@ -1,6 +1,8 @@
 #' Settings
 #'
 #' @name set_opt
+#'
+#' @param ... alles weiter
 #' @param output,fig_folder,html_folder,center  wird über Projekt() eingestellt "html"
 #' @param caption logical TRUE => include N in caption
 #' @param sep_element,brackets globale symbole

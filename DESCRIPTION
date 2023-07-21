@@ -8,7 +8,7 @@ Description: Einstellungen fuer die Formatierung der Tabellen. Lattice settings 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Date: 2022-09-16
 Suggests:
   knitr,

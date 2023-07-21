@@ -2,11 +2,12 @@
   list(
   #  language = "de",
     output =  "",
+   # default_browser = "meleon",
     fig_folder = "Fig/",
     # data_folder = "Raw data/",
     html_folder = "Results/",
     # css=TRUE,
-    caption = NULL,
+    caption = NULL, # TRUE/FALSE
     center =  TRUE,
     sep_element = ", ",
     brackets = c("[", "]"),
@@ -16,7 +17,10 @@
       measure.name.m = "m",
       measure.name.sd = "sd",
       measure.name.total ="Total",
-      measure.name.statistics ="Statistics"
+      measure.name.statistics ="Statistics",
+      caption.nr.prefix =NULL,
+      include.n=FALSE,
+      include.tabel.number=TRUE
      # fmt = number = TRUE
      # caption.nr =TRUE
     ),
@@ -36,9 +40,9 @@
     mean = list(
       digits = 2,
       lead.zero = TRUE,
-      #plusmin_sign = FALSE, #not used wird ueber style gesteuert
+
       plusmin_str = intToUtf8(177),
-      style = 1,
+      style = 1,   # style=3 plusmin_sign
       seperator = ", ",
       include_name= "(mean)"
     ),

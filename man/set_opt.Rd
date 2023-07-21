@@ -13,6 +13,8 @@ get_opt(name = NULL, type = NULL)
 default_stp25(type, name)
 }
 \arguments{
+\item{...}{alles weiter}
+
 \item{name, type}{spezifikation was gesucht ist 'prozent', und 'digits'}
 
 \item{output, fig_folder, html_folder, center}{wird über Projekt() eingestellt "html"}

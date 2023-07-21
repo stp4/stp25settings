@@ -76,9 +76,6 @@ ggplot lattice-Theme
 Black and White lattice-Theme
 }
 \examples{
-
-
-
  #lattice::trellis.par.set(
  #  effects::effectsTheme(
  #
@@ -90,11 +87,7 @@ Black and White lattice-Theme
  #    ))
 
 
-
-
-
   lattice::trellis.par.set(standard_theme())
-
 
   lattice::trellis.par.set(bw_theme(farbe()))
 

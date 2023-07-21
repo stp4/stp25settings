@@ -6,9 +6,6 @@
 #' @export
 #'
 #' @examples
-#'
-#'
-#'
 #'  #lattice::trellis.par.set(
 #'  #  effects::effectsTheme(
 #'  #
@@ -18,9 +15,6 @@
 #'  #    superpose.line = list(lwd = c(2, rep(1, 6))),
 #'  #    col = grey.colors(7, start = 0.3, end = 0.9)
 #'  #    ))
-#'
-#'
-#'
 #'
 set_lattice <- function(theme = bw_theme()) {
   lattice::trellis.par.set(theme)
@@ -42,7 +36,6 @@ reset_lattice <- function() {
 #' @examples
 #'
 #'   lattice::trellis.par.set(standard_theme())
-#'
 standard_theme <- function() {
   theme <- lattice::standard.theme()
   theme$background$col <- "transparent"
@@ -282,55 +275,69 @@ farbe <- function(
   ...) {
 
   cbPalette <- c(
-    orange = "#E69F00",
-    skyblue = "#56B4E9",
-    green = "#009E73",
-    yellow = "#F0E442",
-    blue = "#0072B2",
+    orange     = "#E69F00",
+    skyblue    = "#56B4E9",
+    green      = "#009E73",
+    yellow     = "#F0E442",
+    blue       = "#0072B2",
     vermillion = "#D55E00",
-    purple = "#CC79A7",
-    "#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3",
-    "#A6D854", "#FFD92F", "#E5C494", "#B3B3B3",
-    "#1B9E77", "#D95F02", "#7570B3", "#E7298A",
-    "#66A61E", "#E6AB02", "#A6761D", "#666666"
-)
+    purple     = "#CC79A7",
+                "#66C2A5",
+                "#FC8D62",
+                "#8DA0CB",
+                "#E78AC3",
+                "#A6D854",
+                "#FFD92F",
+                "#E5C494",
+                "#B3B3B3",
+                "#1B9E77",
+                "#D95F02",
+                "#7570B3",
+                "#E7298A",
+                "#66A61E",
+                "#E6AB02",
+                "#A6761D",
+                "#666666"
+  )
 
   type <-  match.arg(type, several.ok = FALSE)
   switch(
     type,
     pirat = c(
-      blue1 = "#0C5BB0FF",
-      green =  "#15983DFF" ,
-      pink =    "#EC579AFF",
-      orange  = "#FA6B09FF",
-      green1 =  "#667840FF" ,
-      red1 = "#B91226FF" ,
-      blue2 = "#149BEDFF" ,
-      green2 = "#A1C720FF",
-      yellow = "#FEC10BFF",
+      blue1     = "#0C5BB0FF",
+      green    =  "#15983DFF" ,
+      pink   =    "#EC579AFF",
+      orange    = "#FA6B09FF",
+      green1   =  "#667840FF" ,
+      red1      = "#B91226FF" ,
+      blue2     = "#149BEDFF" ,
+      green2    = "#A1C720FF",
+      yellow    = "#FEC10BFF",
       turquoise = "#16A08CFF",
-      poop =   "#9A703EFF"  ,
-      purple2  = "#972C8DFF",
-      orange2 =  "#FF6435FF"  ,
-      brown  = "#6A1D1AFF",
+      poop    =   "#9A703EFF"  ,
+      purple2   = "#972C8DFF",
+      orange2  =  "#FF6435FF"  ,
+      brown     = "#6A1D1AFF",
       purple =    "#5A5895FF" ,
-      salmon  = "#D86C4FFF" ,
-      darkgreen  =  "#006A40FF" ,
-      brown1 = "#88775FFF" ,
-      red  =   "#EE0011FF"  ,
-      green = "#5FB233FF",
-      gray1  =  "#323337FF" ,
-      gray2  =  "#534C53FF",
-      blue  =   "#3F516AFF"  ,
-      grayblue = "#708C98FF"
+      salmon    = "#D86C4FFF" ,
+      darkgreen = "#006A40FF" ,
+      brown1    = "#88775FFF" ,
+      red     =   "#EE0011FF"  ,
+      green     = "#5FB233FF",
+      gray1    =  "#323337FF" ,
+      gray2    =  "#534C53FF",
+      blue    =   "#3F516AFF"  ,
+      grayblue  = "#708C98FF"
     )[1:n],
-    ggplot =  c(
-      "#00BA38","#00BFC4",
-      "#619CFF","#F564E3",
-      "#F8766D","#B79F00"
-    ),
+    ggplot =  c("#00BA38",
+                "#00BFC4",
+                "#619CFF",
+                "#F564E3",
+                "#F8766D",
+                "#B79F00"),
 
     dark = RColorBrewer::brewer.pal(n, "Dark2"),
+ #   "#1B9E77" "#D95F02" "#7570B3" "#E7298A" "#66A61E" "#E6AB02" "#A6761D" "#666666"
     dunkel = RColorBrewer::brewer.pal(n, "Dark2"),
     pastel = RColorBrewer::brewer.pal(n, "Pastel1"),
     hell = RColorBrewer::brewer.pal(n, "Pastel1"),
@@ -338,8 +345,11 @@ farbe <- function(
     color.blinde = cbPalette[1:n],
 
     bw =   grDevices::grey.colors(n, start = 0.3, end = 0.9),
-    sex =  c(pink = "#EC579AFF", blue2 = "#149BEDFF"),
-    sex.mf = c(blue2 = "#149BEDFF",  pink = "#EC579AFF"),
+    sex =  c(pink  = "#EC579AFF",
+             blue2 = "#149BEDFF"),
+
+    sex.mf = c(blue2 = "#149BEDFF",
+               pink  = "#EC579AFF"),
 
     grays   =  grDevices::grey.colors(n, start = 0.3, end = 0.9),
     likert = likert_col(n=n, ...),
@@ -353,6 +363,18 @@ farbe <- function(
 #' @param name A palette name from the lists below "RdBl"  ist   RdBl = c("Reds", "Blues")
 #' @param middle,middle.color reference   "gray65"
 #' @importFrom grDevices rgb
+#'
+#' @example
+#'
+#' farbe("likert")
+#' stp25settings:::likert_col(5 )
+#' #"#FC9272"    "#FEE0D2"     "gray90"    "#DEEBF7"    "#9ECAE1"
+#'
+#'
+#' farbe("likert", n=4,  name="GrRd", middle=2)
+#' stp25settings:::likert_col(4 , "GrRd", middle=2)
+#' #"#A1D99B"     "gray90"    "#FEE0D2"    "#FC9272"
+#'
 likert_col <- function(n = 5,
                        name =  "RdBl" ,
                        # c("RdBl", "BlRd",
