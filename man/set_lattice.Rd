@@ -76,6 +76,19 @@ ggplot lattice-Theme
 Black and White lattice-Theme
 }
 \examples{
+
+
+# require(stp25settings)
+require(lattice)
+#lattice::trellis.par.set(standard_theme())
+lattice::trellis.par.set(bw_theme(farbe()))
+barchart(yield ~ variety | site, data = barley,
+         groups = year, layout = c(1,6), stack = TRUE,
+         auto.key = list(space = "right"),
+         ylab = "Barley Yield (bushels/acre)",
+         scales = list(x = list(rot = 45)))
+
+
  #lattice::trellis.par.set(
  #  effects::effectsTheme(
  #
@@ -85,10 +98,5 @@ Black and White lattice-Theme
  #    superpose.line = list(lwd = c(2, rep(1, 6))),
  #    col = grey.colors(7, start = 0.3, end = 0.9)
  #    ))
-
-
-  lattice::trellis.par.set(standard_theme())
-
-  lattice::trellis.par.set(bw_theme(farbe()))
 
 }

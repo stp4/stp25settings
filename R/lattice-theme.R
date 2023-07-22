@@ -6,6 +6,19 @@
 #' @export
 #'
 #' @examples
+#'
+#'
+#' # require(stp25settings)
+#' require(lattice)
+#' #lattice::trellis.par.set(standard_theme())
+#' lattice::trellis.par.set(bw_theme(farbe()))
+#' barchart(yield ~ variety | site, data = barley,
+#'          groups = year, layout = c(1,6), stack = TRUE,
+#'          auto.key = list(space = "right"),
+#'          ylab = "Barley Yield (bushels/acre)",
+#'          scales = list(x = list(rot = 45)))
+#'
+#'
 #'  #lattice::trellis.par.set(
 #'  #  effects::effectsTheme(
 #'  #
@@ -32,10 +45,6 @@ reset_lattice <- function() {
 
 #' @rdname set_lattice
 #' @export
-#'
-#' @examples
-#'
-#'   lattice::trellis.par.set(standard_theme())
 standard_theme <- function() {
   theme <- lattice::standard.theme()
   theme$background$col <- "transparent"
@@ -120,10 +129,6 @@ ggplot_theme <-
 #' @description  Black and White lattice-Theme
 #' @export
 #' @importFrom utils modifyList
-#' @examples
-#'
-#'   lattice::trellis.par.set(bw_theme(farbe()))
-#'
 bw_theme <- function(col = grDevices::grey.colors(7, start = 0.3, end = 0.9),
                      col.n=5,
                      col.bar =  "grey50",
@@ -364,7 +369,9 @@ farbe <- function(
 #' @param middle,middle.color reference   "gray65"
 #' @importFrom grDevices rgb
 #'
-#' @example
+#' @examples
+#'
+#'
 #'
 #' farbe("likert")
 #' stp25settings:::likert_col(5 )

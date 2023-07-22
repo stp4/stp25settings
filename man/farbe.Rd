@@ -65,4 +65,16 @@ barplot(cbind(1:5, rep(3,5)), horiz = TRUE, col=farbe("pirat", 5))
 barplot(cbind(1:3, rep(3,3)), horiz = TRUE, col=farbe("Greens", 3))
 barplot(cbind(1:8, rep(3,8)), horiz = TRUE, col=farbe("color.blinde", 8))
 
+
+
+
+farbe("likert")
+stp25settings:::likert_col(5 )
+#"#FC9272"    "#FEE0D2"     "gray90"    "#DEEBF7"    "#9ECAE1"
+
+
+farbe("likert", n=4,  name="GrRd", middle=2)
+stp25settings:::likert_col(4 , "GrRd", middle=2)
+#"#A1D99B"     "gray90"    "#FEE0D2"    "#FC9272"
+
 }
