@@ -120,7 +120,7 @@ update(
 )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-2-1.png" width="100%" />
+<img src="README_files/figure-gfm/bw-theme-1.png" width="100%" />
 
 ``` r
  lattice::trellis.par.set(
@@ -299,29 +299,4 @@ barplot(cbind(1:3, rep(3,3)), horiz = TRUE,
         col= c( "#0000FF50",  "#0000FF80", "#0000FFFF"))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
-
-## Language wird in nicht mehr benutzt und unterstuetzt
-
-    set_lang("de")       
-    get_lang("mean.Rank")
-    set_lang("en")           
-    get_lang("mean.Rank")
-
-``` r
-
-  dat<- data.frame(
-    term = c("A", "B", "C", "D"),
-    n = c(23, 14, 56, 2),
-    m = c("4.7 (2.4)", "4.1 (2.3)", "8.9 (3.6)", NA),
-    mean.Rank=c(3,3,1,4)
-  ) 
-dat
-#   term  n         m mean.Rank
-# 1    A 23 4.7 (2.4)         3
-# 2    B 14 4.1 (2.3)         3
-# 3    C 56 8.9 (3.6)         1
-# 4    D  2      <NA>         4
-    # stp25output2::Output(dat )
-   #  stp25output::Output(dat )
-```
+<img src="README_files/figure-gfm/bar-farbe-1.png" width="100%" />

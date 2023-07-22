@@ -107,7 +107,7 @@ which_output()
 ## Plot
 
 
-```{r}
+```{r bw-theme}
 require(lattice)
 require(latticeExtra)
 
@@ -206,7 +206,7 @@ farbe("likert", 7, name="RdBl", middle.color= "#00FF00")
 
 
 
-```{r}
+```{r bar-farbe}
 par(mfrow=c(3,3))
 barplot(cbind(1:5, rep(3,5)), horiz = TRUE, 
         col=farbe("likert", 5, name="RdBl"))
@@ -234,4 +234,4 @@ barplot(cbind(1:3, rep(3,3)), horiz = TRUE,
 
 
 
-
+ 
