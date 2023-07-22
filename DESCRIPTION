@@ -4,7 +4,7 @@ Title: settings stp25stat2
 Version: 0.2.0
 Author: Wolfgang Peter
 Maintainer: Wolfgang Peter <w.peter@statistik-peter.at>
-Description: Einstellungen fuer die Formatierung der Tabellen. Lattice settings und Farben.
+Description: Einstellungen für die Formatierung der Tabellen (stp25stat2) und die Farben für lattice-plots.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
