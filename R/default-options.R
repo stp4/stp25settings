@@ -41,7 +41,7 @@
       digits = 2,
       lead.zero = TRUE,
 
-      plusmin_str = intToUtf8(177),
+      plusmin_str = paste(" ", intToUtf8(177), " "),
       style = 1,   # style=3 plusmin_sign
       seperator = ", ",
       include_name= "(mean)"

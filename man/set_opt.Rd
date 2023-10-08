@@ -80,9 +80,31 @@ mark.sig = NULL )}
 string
 }
 \description{
-Settings
+style:
+}
+\details{
+1 =
+33.5 (5.0)
+48% (40)
+
+
+2  =
+33.5 (SD 5.0, range 23.7 to 46.5)
+40 (48%)
+
+
+3  =
+33.5±5.0
+48%
+
+
+4 =
+33.5±5.0
+40
 }
 \examples{
+
+set_opt(table =list(include.tabel.number = TRUE))
 
 set_opt(
 percent = list(
