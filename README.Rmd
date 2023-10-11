@@ -106,6 +106,24 @@ which_output()
 
 ## Plot
 
+```{r}
+set_opt(fig_folder ="Grafiken")
+get_opt("fig_folder")
+
+
+#'  "pirat", "ggplot", 
+#'  "dark", "dunkel",
+#'  "pastel", "hell", 
+#'  "cb", "color.blinde",
+#'  "sex", "sex.mf", 
+#'  "bw", "grays", 
+#'  "likert",
+#'  "Reds", "Blues", "Greens","Blues", "Greys", "Oranges", "Purples"
+
+farbe("pirat")
+```
+
+
 
 ```{r bw-theme}
 require(lattice)

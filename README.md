@@ -96,6 +96,26 @@ which_output()
 ## Plot
 
 ``` r
+set_opt(fig_folder ="Grafiken")
+get_opt("fig_folder")
+# [1] "Grafiken/"
+
+
+#'  "pirat", "ggplot", 
+#'  "dark", "dunkel",
+#'  "pastel", "hell", 
+#'  "cb", "color.blinde",
+#'  "sex", "sex.mf", 
+#'  "bw", "grays", 
+#'  "likert",
+#'  "Reds", "Blues", "Greens","Blues", "Greys", "Oranges", "Purples"
+
+farbe("pirat")
+#       blue1       green        pink      orange      green1 
+# "#0C5BB0FF" "#15983DFF" "#EC579AFF" "#FA6B09FF" "#667840FF"
+```
+
+``` r
 require(lattice)
 require(latticeExtra)
 
@@ -112,7 +132,7 @@ update(
     ylab = NULL
   ),
  # par.strip.text = list(lines = 2.5, cex=1.5, col = 6),
-  par.settings = bw_theme(
+  par.settings = bw_theme(farbe("pirat"),
   cex.symbol =  1.2,
   cex.xlab = .85,
   cex.axis = .5
