@@ -1,8 +1,9 @@
 #' Settings
 #'
+#' set_opt(html_folder ="Temp-Ordner")
+#'
 #'
 #' style:
-#'
 #'
 #' 1 =
 #' 33.5 (5.0)
@@ -26,7 +27,7 @@
 #' @name set_opt
 #'
 #' @param ... alles weiter
-#' @param output,fig_folder,html_folder,center  wird über Projekt() eingestellt "html"
+#' @param output,fig_folder,html_folder,center  erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")
 #' @param caption logical TRUE => include N in caption
 #' @param sep_element,brackets globale symbole
 #' @param table list(
