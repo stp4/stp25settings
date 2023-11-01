@@ -93,32 +93,18 @@ which_output()
 # [1] "markdown_html"
 ```
 
-## Plot
+## lattice options
 
 ``` r
 set_opt(fig_folder ="Grafiken")
 get_opt("fig_folder")
 # [1] "Grafiken/"
-
-
-#'  "pirat", "ggplot", 
-#'  "dark", "dunkel",
-#'  "pastel", "hell", 
-#'  "cb", "color.blinde",
-#'  "sex", "sex.mf", 
-#'  "bw", "grays", 
-#'  "likert",
-#'  "Reds", "Blues", "Greens","Blues", "Greys", "Oranges", "Purples"
-
 farbe("pirat")
 #       blue1       green        pink      orange      green1 
 # "#0C5BB0FF" "#15983DFF" "#EC579AFF" "#FA6B09FF" "#667840FF"
 ```
 
 ``` r
-require(lattice)
-require(latticeExtra)
-
 # lattice::trellis.par.set(bw_theme)
 update(
   dotplot(
@@ -132,7 +118,7 @@ update(
     ylab = NULL
   ),
  # par.strip.text = list(lines = 2.5, cex=1.5, col = 6),
-  par.settings = bw_theme(farbe("pirat"),
+  par.settings = bw_theme(
   cex.symbol =  1.2,
   cex.xlab = .85,
   cex.axis = .5
@@ -140,19 +126,167 @@ update(
 )
 ```
 
-<img src="README_files/figure-gfm/bw-theme-1.png" width="100%" />
+<img src="README_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+
+## Effect-plots
+
+Effect-plots sind eine Variante der `lattice::xyplots`
 
 ``` r
- lattice::trellis.par.set(
-   effects::effectsTheme(
-     strip.background = list(col = "transparent"),
-     strip.shingle = list(col = "black"),
-     clip = list(strip = "off"),
-     superpose.line = list(lwd = c(2, rep(1, 6))),
-     col = grey.colors(7, start = 0.3, end = 0.9)
-
-     ))
+require(effects)
+effects::effectsTheme()
+# $strip.background
+# $strip.background$col
+# [1] "#F2F2F2" "#B9B9B9" "#808080"
+# 
+# 
+# $strip.shingle
+# $strip.shingle$col
+# [1] "black"
+# 
+# 
+# $clip
+# $clip$strip
+# [1] "off"
+# 
+# 
+# $superpose.line
+# $superpose.line$lwd
+# [1] 2 1 1 1 1 1 1
+# 
+# 
+# attr(,"current")
+# attr(,"current")$strip.background
+# attr(,"current")$strip.background$alpha
+# [1] 1
+# 
+# attr(,"current")$strip.background$col
+# [1] "gray95" "gray95" "gray95" "gray95" "gray95" "gray95"
+# [7] "gray95"
+# 
+# 
+# attr(,"current")$strip.shingle
+# attr(,"current")$strip.shingle$alpha
+# [1] 1
+# 
+# attr(,"current")$strip.shingle$col
+# [1] "gray70" "gray70" "gray70" "gray70" "gray70" "gray70"
+# [7] "gray70"
+# 
+# 
+# attr(,"current")$clip
+# attr(,"current")$clip$panel
+# [1] "on"
+# 
+# attr(,"current")$clip$strip
+# [1] "on"
+# 
+# 
+# attr(,"current")$superpose.line
+# attr(,"current")$superpose.line$alpha
+# [1] 1
+# 
+# attr(,"current")$superpose.line$col
+#          blue        orange   bluishgreen    vermillion 
+#     "#0072B2"     "#E69F00"     "#009E73"     "#D55E00" 
+#       skyblue        yellow reddishpurple 
+#     "#56B4E9"     "#F0E442"     "#CC79A7" 
+# 
+# attr(,"current")$superpose.line$lty
+# [1] 1 1 1 1 1 1 1
+# 
+# attr(,"current")$superpose.line$lwd
+# [1] 1 1 1 1 1 1 1
 ```
+
+``` r
+mod.cowles <- glm(volunteer ~ sex + neuroticism*extraversion,data=Cowles, family=binomial)
+
+lattice::trellis.par.set(effectsTheme())
+plot(allEffects(mod.cowles), main="Default settings")
+```
+
+<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
+
+``` r
+
+lattice::trellis.par.set(bw_theme())
+plot(allEffects(mod.cowles), main="bw_theme")
+```
+
+<img src="README_files/figure-gfm/unnamed-chunk-6-2.png" width="100%" />
+
+``` r
+lattice::trellis.par.set(
+  effects::effectsTheme(
+    superpose.line = list(lwd = c(3, rep(1, 6))),
+    col = farbe()
+  ))
+```
+
+### Margins einstellen
+
+``` r
+
+# axis.padding<- lattice::lattice.getOption("axis.padding")
+# layout.heights <- lattice::lattice.getOption("layout.heights")
+# layout.widths <- lattice::lattice.getOption("layout.widths")
+
+lattice::lattice.options(
+  layout.widths=
+    list(
+      left.padding=list(x=.4), 
+      right.padding=list(x=1)
+    ),
+  axis.padding =list(numeric=0.3)
+)
+plot(allEffects(mod.cowles), main="händisch" , 
+     lattice = list(cex=5)
+     )
+```
+
+<img src="README_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
+
+``` r
+
+# lattice::lattice.options(layout.widths =layout.widths,
+#                 axis.padding= axis.padding)
+```
+
+### Effect-Plot Händisch
+
+Das geht nur händich
+
+``` r
+
+as.data.frame(effect("sex", mod.cowles))
+#      sex       fit         se     lower     upper
+# 1 female 0.4409440 0.01815204 0.4057279 0.4767645
+# 2   male 0.3811939 0.01967564 0.3434476 0.4204322
+
+p1 <- plot(effect("sex", mod.cowles), main = "händisch")
+update(
+  p1,
+  panel = function(x, y, lower, upper, has.se, ...) {
+    larrows(
+      x0 = x, y0 = lower,
+      x1 = x, y1 = upper,
+      angle = 90,  code = 3,
+      col = "#7570B3",
+      length = 1,
+      lwd = 5
+    )
+    
+    panel.xyplot(
+      x, y,
+     cex = 5,
+     pch = 18,
+     col =  "#E7298A",)
+  }
+  )
+```
+
+<img src="README_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
 
 ## Usage
 

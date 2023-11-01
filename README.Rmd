@@ -104,31 +104,21 @@ which_output()
 ```
 
 
-## Plot
+## lattice options 
 
 ```{r}
 set_opt(fig_folder ="Grafiken")
 get_opt("fig_folder")
-
-
-#'  "pirat", "ggplot", 
-#'  "dark", "dunkel",
-#'  "pastel", "hell", 
-#'  "cb", "color.blinde",
-#'  "sex", "sex.mf", 
-#'  "bw", "grays", 
-#'  "likert",
-#'  "Reds", "Blues", "Greens","Blues", "Greys", "Oranges", "Purples"
-
 farbe("pirat")
 ```
 
-
-
-```{r bw-theme}
+```{r, include=FALSE}
 require(lattice)
 require(latticeExtra)
+```
 
+
+```{r}
 # lattice::trellis.par.set(bw_theme)
 update(
   dotplot(
@@ -148,24 +138,101 @@ update(
   cex.axis = .5
   )
 )
-
-
-
 ```
 
 
+## Effect-plots
+
+Effect-plots sind eine Variante der `lattice::xyplots`
 
 ```{r}
- lattice::trellis.par.set(
-   effects::effectsTheme(
-     strip.background = list(col = "transparent"),
-     strip.shingle = list(col = "black"),
-     clip = list(strip = "off"),
-     superpose.line = list(lwd = c(2, rep(1, 6))),
-     col = grey.colors(7, start = 0.3, end = 0.9)
-
-     ))
+require(effects)
+effects::effectsTheme()
 ```
+
+
+
+```{r, fig.height=4, fig.width=7}
+mod.cowles <- glm(volunteer ~ sex + neuroticism*extraversion,data=Cowles, family=binomial)
+
+lattice::trellis.par.set(effectsTheme())
+plot(allEffects(mod.cowles), main="Default settings")
+
+lattice::trellis.par.set(bw_theme())
+plot(allEffects(mod.cowles), main="bw_theme")
+
+```
+
+```{r, fig.height=4, fig.width=7}
+lattice::trellis.par.set(
+  effects::effectsTheme(
+    superpose.line = list(lwd = c(3, rep(1, 6))),
+    col = farbe()
+  ))
+```
+
+
+### Margins einstellen
+
+```{r, fig.height=4, fig.width=7}
+
+# axis.padding<- lattice::lattice.getOption("axis.padding")
+# layout.heights <- lattice::lattice.getOption("layout.heights")
+# layout.widths <- lattice::lattice.getOption("layout.widths")
+
+lattice::lattice.options(
+  layout.widths=
+    list(
+      left.padding=list(x=.4), 
+      right.padding=list(x=1)
+    ),
+  axis.padding =list(numeric=0.3)
+)
+plot(allEffects(mod.cowles), main="händisch" , 
+     lattice = list(cex=5)
+     )
+
+# lattice::lattice.options(layout.widths =layout.widths,
+#                 axis.padding= axis.padding)
+```
+
+
+
+
+### Effect-Plot Händisch
+
+Das geht nur händich
+
+```{r, fig.height=3.5, fig.width=3.5}
+
+as.data.frame(effect("sex", mod.cowles))
+
+p1 <- plot(effect("sex", mod.cowles), main = "händisch")
+update(
+  p1,
+  panel = function(x, y, lower, upper, has.se, ...) {
+    larrows(
+      x0 = x, y0 = lower,
+      x1 = x, y1 = upper,
+      angle = 90,  code = 3,
+      col = "#7570B3",
+      length = 1,
+      lwd = 5
+    )
+    
+    panel.xyplot(
+      x, y,
+     cex = 5,
+     pch = 18,
+     col =  "#E7298A",)
+  }
+  )
+```
+
+
+
+
+
 
 
 
