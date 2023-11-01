@@ -17,7 +17,7 @@ default_stp25(type, name)
 
 \item{name, type}{spezifikation was gesucht ist 'prozent', und 'digits'}
 
-\item{output, fig_folder, html_folder, center}{wird über Projekt() eingestellt "html"}
+\item{output, fig_folder, html_folder, center}{erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")}
 
 \item{caption}{logical TRUE => include N in caption}
 
@@ -80,9 +80,11 @@ mark.sig = NULL )}
 string
 }
 \description{
-style:
+set_opt(html_folder ="Temp-Ordner")
 }
 \details{
+style:
+
 1 =
 33.5 (5.0)
 48% (40)

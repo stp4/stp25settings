@@ -78,6 +78,30 @@ Black and White lattice-Theme
 \examples{
 
 
+axis.padding   <- lattice.getOption("axis.padding")
+layout.heights <- lattice.getOption("layout.heights")
+layout.widths  <- lattice.getOption("layout.widths")
+
+#' Abstand der inneren Labels in effect::plot() (ist ja ein lattice-plot)
+lattice.options(axis.padding =list(numeric=0.3))
+
+#' Abstand oben, unten, links, rechts
+lattice.options(
+  layout.widths =
+    list(
+      left.padding=list(x=.4),
+      right.padding=list(x=1)
+    )
+  )
+
+#' reset
+lattice.options(
+  layout.widths = layout.widths,
+  layout.heights =layout.heights,
+  axis.padding =axis.padding
+  )
+
+
 # require(stp25settings)
 require(lattice)
 #lattice::trellis.par.set(standard_theme())
