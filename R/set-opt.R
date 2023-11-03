@@ -27,16 +27,21 @@
 #' @name set_opt
 #'
 #' @param ... alles weiter
-#' @param output,fig_folder,html_folder,center  erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")
-#' @param caption logical TRUE => include N in caption
-#' @param sep_element,brackets globale symbole
-#' @param table list(
+#'
+#'output,fig_folder,html_folder,center  erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")
+#'
+#'  caption logical TRUE => include N in caption
+#'
+#'  sep_element,brackets globale symbole
+#'
+#'  table list(
 #' stubhead  = "Item",
 #' measure.name.m = "m",
 #' measure.name.sd = "sd",
 #' measure.name.total ="Total",
 #' measure.name.statistics ="Statistics")
-#' @param prozent list(
+#'
+#'  prozent list(
 #' digits = 0,
 #' lead.zero = TRUE,
 #' style = 1,
@@ -45,30 +50,37 @@
 #' include_name= "",
 #' include_level_multi=TRUE,
 #' exclude)
-#' @param mean   list(
+#'
+#'  mean   list(
 #' digits = 2,
 #' lead.zero = TRUE,
 #' plusmin_str = intToUtf8(177),
 #' style = 1,
 #' seperator = ", ",
 #' include_name= "(mean)" )
-#' @param median   list(
+#'
+#'  median   list(
 #'   digits = 2,
 #'   lead.zero = TRUE,
 #'   seperator = ", ",
 #'   style = "IQR",
 #'   include_name="(median)" )
-#' @param Fstat  list(
+#'
+#'  Fstat  list(
 #' digits = 2,
 #' lead.zero = TRUE,
 #' include.statistic=TRUE )
-#' @param r list(
+#'
+#'
+#'  r list(
 #' digits = 2,
 #' lead.zero = FALSE)
-#' @param r2  list(
+#'
+#'  r2  list(
 #' digits = 2,
 #' lead.zero = FALSE)
-#' @param p   list(
+#'
+#'  p   list(
 #'   digits = 3,
 #'   lead.zero = FALSE,
 #'   stars.value = c(0.001, 0.01, 0.05),
@@ -127,9 +139,6 @@ set_opt <- function(...) {
 
   stp25.options(new)
 }
-
-
-
 
 
 stp25.options <- function(...){

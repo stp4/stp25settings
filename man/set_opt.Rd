@@ -13,24 +13,22 @@ get_opt(name = NULL, type = NULL)
 default_stp25(type, name)
 }
 \arguments{
-\item{...}{alles weiter}
+\item{...}{alles weiter
 
-\item{name, type}{spezifikation was gesucht ist 'prozent', und 'digits'}
+output,fig_folder,html_folder,center  erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")
 
-\item{output, fig_folder, html_folder, center}{erstellt neuen ordner set_opt(html_folder ="Temp-Ordner")}
+ caption logical TRUE => include N in caption
 
-\item{caption}{logical TRUE => include N in caption}
+ sep_element,brackets globale symbole
 
-\item{sep_element, brackets}{globale symbole}
-
-\item{table}{list(
+ table list(
 stubhead  = "Item",
 measure.name.m = "m",
 measure.name.sd = "sd",
 measure.name.total ="Total",
-measure.name.statistics ="Statistics")}
+measure.name.statistics ="Statistics")
 
-\item{prozent}{list(
+ prozent list(
 digits = 0,
 lead.zero = TRUE,
 style = 1,
@@ -38,43 +36,46 @@ percentage_str = "%",
 null_percent_sign = ".",
 include_name= "",
 include_level_multi=TRUE,
-exclude)}
+exclude)
 
-\item{mean}{list(
+ mean   list(
 digits = 2,
 lead.zero = TRUE,
 plusmin_str = intToUtf8(177),
 style = 1,
 seperator = ", ",
-include_name= "(mean)" )}
+include_name= "(mean)" )
 
-\item{median}{list(
+ median   list(
+  digits = 2,
+  lead.zero = TRUE,
+  seperator = ", ",
+  style = "IQR",
+  include_name="(median)" )
+
+ Fstat  list(
 digits = 2,
 lead.zero = TRUE,
-seperator = ", ",
-style = "IQR",
-include_name="(median)" )}
+include.statistic=TRUE )
 
-\item{Fstat}{list(
+
+ r list(
 digits = 2,
-lead.zero = TRUE,
-include.statistic=TRUE )}
+lead.zero = FALSE)
 
-\item{r}{list(
+ r2  list(
 digits = 2,
-lead.zero = FALSE)}
+lead.zero = FALSE)
 
-\item{r2}{list(
-digits = 2,
-lead.zero = FALSE)}
+ p   list(
+  digits = 3,
+  lead.zero = FALSE,
+  stars.value = c(0.001, 0.01, 0.05),
+  stars.symbols = c("***", "**", "*"),
+  with.stars = FALSE,
+  mark.sig = NULL )}
 
-\item{p}{list(
-digits = 3,
-lead.zero = FALSE,
-stars.value = c(0.001, 0.01, 0.05),
-stars.symbols = c("***", "**", "*"),
-with.stars = FALSE,
-mark.sig = NULL )}
+\item{name, type}{spezifikation was gesucht ist 'prozent', und 'digits'}
 }
 \value{
 string

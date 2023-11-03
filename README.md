@@ -126,7 +126,7 @@ update(
 )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+<img src="README_files/figure-gfm/dotplot-1.png" width="100%" />
 
 ## Effect-plots
 
@@ -206,7 +206,7 @@ lattice::trellis.par.set(effectsTheme())
 plot(allEffects(mod.cowles), main="Default settings")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
+<img src="README_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 
@@ -214,7 +214,7 @@ lattice::trellis.par.set(bw_theme())
 plot(allEffects(mod.cowles), main="bw_theme")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-2.png" width="100%" />
+<img src="README_files/figure-gfm/unnamed-chunk-5-2.png" width="100%" />
 
 ``` r
 lattice::trellis.par.set(
@@ -245,7 +245,7 @@ plot(allEffects(mod.cowles), main="händisch" ,
      )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
+<img src="README_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
 
 ``` r
 
@@ -286,7 +286,7 @@ update(
   )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+<img src="README_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
 
 ## Usage
 

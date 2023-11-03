@@ -1,0 +1,49 @@
+---
+title: "Getting Started"
+author: "Wolfgang Peter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(rmarkdown)
+```
+
+## Aims of the Package
+ 
+## Comparison to Other Packages
+
+ 
+## Examples of Features
+
+```
+devtools::check_rhub(env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))
+update.packages(ask = FALSE, checkBuilt = TRUE)
+install.packages("C:/Users/wpete/Dropbox/3_Forschung/R-Project/stp25settings_0.2.1.tar.gz", 
+repos = NULL, 
+type = "source")
+```
+
+
+```{r, use-set_opt}
+require(stp25settings)
+ set_opt(
+   p = list(digits = 2, mark.sig = TRUE),
+   prozent = list(digits = 0, null_percent_sign =  ' . ')
+ )
+ get_opt("prozent")
+ 
+ get_opt()$p$digits
+
+```
+
+
+## References

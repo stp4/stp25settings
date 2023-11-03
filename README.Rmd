@@ -58,7 +58,7 @@ reset_lattice(), set_lattice()
  
  
 
-```{r, use-set_opt}
+```{r use-set_opt}
  set_opt(
    p = list(digits = 2, mark.sig = TRUE),
    prozent = list(digits = 0, null_percent_sign =  ' . ')
@@ -70,7 +70,7 @@ reset_lattice(), set_lattice()
 ```
 
 
-```{r, simple-table, echo=FALSE}
+```{r simple-table, echo=FALSE}
 require(stp25stat2)
 
 mtcars %>% Tbll_desc (
@@ -118,7 +118,7 @@ require(latticeExtra)
 ```
 
 
-```{r}
+```{r par-settings}
 # lattice::trellis.par.set(bw_theme)
 update(
   dotplot(
@@ -152,7 +152,7 @@ effects::effectsTheme()
 
 
 
-```{r, fig.height=4, fig.width=7}
+```{r effect-theme, fig.height=4, fig.width=7}
 mod.cowles <- glm(volunteer ~ sex + neuroticism*extraversion,data=Cowles, family=binomial)
 
 lattice::trellis.par.set(effectsTheme())
@@ -174,7 +174,7 @@ lattice::trellis.par.set(
 
 ### Margins einstellen
 
-```{r, fig.height=4, fig.width=7}
+```{r axis-padding, fig.height=4, fig.width=7}
 
 # axis.padding<- lattice::lattice.getOption("axis.padding")
 # layout.heights <- lattice::lattice.getOption("layout.heights")
@@ -203,7 +203,7 @@ plot(allEffects(mod.cowles), main="händisch" ,
 
 Das geht nur händich
 
-```{r, fig.height=3.5, fig.width=3.5}
+```{r manual, fig.height=3.5, fig.width=3.5}
 
 as.data.frame(effect("sex", mod.cowles))
 

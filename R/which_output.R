@@ -7,7 +7,6 @@
 #'
 #' which_output()
 #'
-#'
 which_output <- function() {
   in_opt <- get_opt("output")
   in_formats <- c("text", "markdown", "md", "pandoc", "rst", "html", "docx", "word", "latex")
@@ -50,12 +49,6 @@ which_output <- function() {
 }
 
 guess_in_format <- function(x) {
-  if (any(grepl("gfm", x)))
-    "markdown_html"
-  else
-    "text"
+  if (any(grepl("gfm", x))) "markdown_html"
+  else "text"
 }
-
-
-
-

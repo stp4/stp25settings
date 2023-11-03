@@ -77,7 +77,7 @@ Black and White lattice-Theme
 }
 \examples{
 
-
+library(lattice)
 axis.padding   <- lattice.getOption("axis.padding")
 layout.heights <- lattice.getOption("layout.heights")
 layout.widths  <- lattice.getOption("layout.widths")
