@@ -41,6 +41,17 @@
 #'          auto.key = list(space = "right"),
 #'          ylab = "Barley Yield (bushels/acre)",
 #'          scales = list(x = list(rot = 45)))
+#' #'
+#' his <- data.frame(variable = LETTERS[1:5],  value = c(2, 3, 5, 6, 4))
+#'
+#' barchart(
+#'   variable ~ value ,
+#'   his,
+#'   xlab = "Prozent nicht zutreffend",
+#'   origin = 0,
+#'   par.settings =
+#'     bw_theme(col.bar  =  "#708C98FF")
+#' )
 #'
 #'
 #'  #lattice::trellis.par.set(
@@ -56,6 +67,15 @@
 set_lattice <- function(theme = bw_theme()) {
   lattice::trellis.par.set(theme)
   invisible(theme)
+}
+
+my_theme <- function(
+                     col = c("#0C5BB0FF","#15983DFF","#EC579AFF","#FA6B09FF","#667840FF"),
+                     col.bar  = "#708C98FF",
+                     ...) {
+  #' @rdname set_lattice
+  #' @export
+  bw_theme(col = col, col.bar = col.bar,...)
 }
 
 #' @rdname set_lattice
@@ -132,6 +152,7 @@ ggplot_theme <-
     theme$par.ylab.text$cex <- cex.ylab
     theme$par.main.text$cex <- cex.main
     theme$axis.text$cex <- cex.axis
+
     # text in auto.key
     theme$add.text$cex <- cex.add
 
@@ -145,8 +166,8 @@ ggplot_theme <-
 
 #' @param col,col.bar,col.n  Farben
 #' @param pch,lty,lwd Symbole
-#' @param cex,cex.main,cex.axis,cex.xlab,cex.ylab,cex.add,cex.symbol Schrift und Symbol-Groese
-#' @param strip.background.col,strip.border.col,strip.text.col,strip.text.cex,strip.text.lineheight Strip
+#' @param cex,cex.main,cex.axis,cex.xlab,cex.ylab,cex.symbol Schrift und Symbol-Groese
+#' @param cex.strip,cex.add,strip.lineheight,strip.background.col,strip.border.col,strip.text.col  Strip
 #' @param box Box
 #' @param ... alles was direkt an trellis.par.set uebergeben wird
 #' @rdname set_lattice
@@ -155,7 +176,7 @@ ggplot_theme <-
 #' @importFrom utils modifyList
 bw_theme <- function(col = grDevices::grey.colors(7, start = 0.3, end = 0.9),
                      col.n=5,
-                     col.bar =  "grey50",
+                     col.bar = "grey50",
                      pch = 15:18,
                      lty = 1:3,
                      lwd =c(2, rep(1, 6)),
@@ -165,14 +186,21 @@ bw_theme <- function(col = grDevices::grey.colors(7, start = 0.3, end = 0.9),
                      cex.axis = 0.8,
                      cex.xlab = 1,
                      cex.ylab = 1,
-                     cex.add = 0.8,
+                     cex.strip = 0.8,
+
+                     cex.add = cex.strip,
                      cex.symbol =  0.8,
 
+                     strip.lineheight = 1.2,
                      strip.background.col = "transparent",
                      strip.border.col = "#000000",
                      strip.text.col = "#000000",
-                     strip.text.cex = NULL,
-                     strip.text.lineheight = NULL,
+
+                     bottom = 1,
+                     top = 1,
+                     left = 1,
+                     right = 1,
+
                      box = NULL,
                      ...) {
 
@@ -189,34 +217,31 @@ bw_theme <- function(col = grDevices::grey.colors(7, start = 0.3, end = 0.9),
   theme$superpose.symbol$fill <- col
   theme$superpose.symbol$col <- col
   theme$superpose.symbol$cex <- cex.symbol
+
   # balken
   theme$superpose.polygon$col <- col
   theme$superpose.polygon$border <- "transparent"
   theme$plot.polygon$col <- col.bar
+  theme$plot.polygon$border <- "transparent"
+
   # lienien
   theme$superpose.line$col <- col
   theme$superpose.line$lty <- lty
   theme$superpose.line$lwd <- lwd
+
   # box-plot
   theme$box.dot$pch <- 19
   theme$box.dot$cex <- cex.symbol
   theme$plot.symbol$pch <- 1
   # text in auto.key und strip
   theme$add.text$cex <- cex.add
+
   # strip.default
   theme$strip.shingle$col <- col
   theme$strip.background$col <- strip.background.col
   theme$strip.border$col <- strip.border.col
   theme$add.text$col <-  strip.text.col
-  if (!is.null(strip.text.cex)) {
-    theme$add.text$cex <- strip.text.cex
-    warning("strip.text.cex: das geht nur mit\n par.strip.text = list(cex = 2)")
-  }
-  if (!is.null(strip.text.lineheight))
-    warning(
-      "strip.text.lineheight: das geht nicht - aber das funktioniert\n par.strip.text = list(lineheight= 2)"
-    )
-  # main, labs
+
   theme$par.xlab.text$cex <- cex.xlab
   theme$par.ylab.text$cex <- cex.ylab
   theme$par.main.text$cex <- cex.main
@@ -224,19 +249,26 @@ bw_theme <- function(col = grDevices::grey.colors(7, start = 0.3, end = 0.9),
 
 
   # effects::effectsTheme
-  #strip.background = list(col = gray(seq(0.95, 0.5, length = 3)))
- # strip.shingle = list(col = "black")
+  # strip.background = list(col = gray(seq(0.95, 0.5, length = 3)))
+  # strip.shingle = list(col = "black")
   theme$clip$strip <-"off"
-#  superpose.line = list(lwd = c(2, rep(1, 6)))
+  #  superpose.line = list(lwd = c(2, rep(1, 6)))
 
 
-
-  #box um die Grafik
+  # box um die Grafik
   if (!is.null(box)) {
     theme$box.3d$col <- "transparent"
     theme$strip.border$col <- "transparent"
     theme$axis.line$col <- "transparent"
   }
+
+  # layout
+  theme$layout.heights$top.padding <- top
+  theme$layout.heights$bottom.padding <- bottom
+  theme$layout.widths$left.padding <- left
+  theme$layout.widths$right.padding <- right
+
+  theme$layout.heights$strip <- strip.lineheight
 
   val <- list(...)
   if (length(val == 0))
@@ -817,3 +849,7 @@ brewer_pal2<- function(n,
 
 is.odd <- function(x)
   trunc(x) - x == 0
+
+
+
+

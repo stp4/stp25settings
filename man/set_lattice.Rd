@@ -2,6 +2,7 @@
 % Please edit documentation in R/lattice-theme.R
 \name{set_lattice}
 \alias{set_lattice}
+\alias{my_theme}
 \alias{reset_lattice}
 \alias{standard_theme}
 \alias{ggplot_theme}
@@ -9,6 +10,12 @@
 \title{Graphical Parameters for Lattice}
 \usage{
 set_lattice(theme = bw_theme())
+
+my_theme(
+  col = c("#0C5BB0FF", "#15983DFF", "#EC579AFF", "#FA6B09FF", "#667840FF"),
+  col.bar = "#708C98FF",
+  ...
+)
 
 reset_lattice()
 
@@ -41,13 +48,17 @@ bw_theme(
   cex.axis = 0.8,
   cex.xlab = 1,
   cex.ylab = 1,
-  cex.add = 0.8,
+  cex.strip = 0.8,
+  cex.add = cex.strip,
   cex.symbol = 0.8,
+  strip.lineheight = 1.2,
   strip.background.col = "transparent",
   strip.border.col = "#000000",
   strip.text.col = "#000000",
-  strip.text.cex = NULL,
-  strip.text.lineheight = NULL,
+  bottom = 1,
+  top = 1,
+  left = 1,
+  right = 1,
   box = NULL,
   ...
 )
@@ -57,13 +68,13 @@ bw_theme(
 
 \item{col, col.bar, col.n}{Farben}
 
+\item{...}{alles was direkt an trellis.par.set uebergeben wird}
+
 \item{pch, lty, lwd}{Symbole}
 
-\item{cex, cex.main, cex.axis, cex.xlab, cex.ylab, cex.add, cex.symbol}{Schrift und Symbol-Groese}
+\item{cex, cex.main, cex.axis, cex.xlab, cex.ylab, cex.symbol}{Schrift und Symbol-Groese}
 
-\item{strip.background.col, strip.border.col, strip.text.col, strip.text.cex, strip.text.lineheight}{Strip}
-
-\item{...}{alles was direkt an trellis.par.set uebergeben wird}
+\item{cex.strip, cex.add, strip.lineheight, strip.background.col, strip.border.col, strip.text.col}{Strip}
 
 \item{box}{Box}
 }
@@ -111,6 +122,17 @@ barchart(yield ~ variety | site, data = barley,
          auto.key = list(space = "right"),
          ylab = "Barley Yield (bushels/acre)",
          scales = list(x = list(rot = 45)))
+#'
+his <- data.frame(variable = LETTERS[1:5],  value = c(2, 3, 5, 6, 4))
+
+barchart(
+  variable ~ value ,
+  his,
+  xlab = "Prozent nicht zutreffend",
+  origin = 0,
+  par.settings =
+    bw_theme(col.bar  =  "#708C98FF")
+)
 
 
  #lattice::trellis.par.set(

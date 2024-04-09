@@ -12,7 +12,7 @@
 
 <meta name="author" content="Wolfgang Peter" />
 
-<meta name="date" content="2023-11-03" />
+<meta name="date" content="2024-03-13" />
 
 <title>Getting Started</title>
 
@@ -340,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Getting Started</h1>
 <h4 class="author">Wolfgang Peter</h4>
-<h4 class="date">2023-11-03</h4>
+<h4 class="date">2024-03-13</h4>
 
 
 
@@ -354,7 +354,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Examples of Features</h2>
 <pre><code>devtools::check_rhub(env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = &quot;always&quot;))
 update.packages(ask = FALSE, checkBuilt = TRUE)
-</code></pre>
+install.packages(&quot;C:/Users/wpete/Dropbox/3_Forschung/R-Project/stp25settings_0.2.1.tar.gz&quot;, 
+repos = NULL, 
+type = &quot;source&quot;)</code></pre>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">require</span>(stp25settings)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a> <span class="fu">set_opt</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>   <span class="at">p =</span> <span class="fu">list</span>(<span class="at">digits =</span> <span class="dv">2</span>, <span class="at">mark.sig =</span> <span class="cn">TRUE</span>),</span>
