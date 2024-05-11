@@ -10,6 +10,14 @@ stp25settings
 
 - Output: which_output()
 
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/stp25stat2)](https://CRAN.R-project.org/package=stp25stat2)
+<!-- badges: end -->
+
 ## Default stp25 Options
 
     language = "de"
@@ -126,7 +134,7 @@ update(
 )
 ```
 
-<img src="README_files/figure-gfm/dotplot-1.png" width="100%" />
+<img src="README_files/figure-gfm/par-settings-1.png" width="100%" />
 
 ## Effect-plots
 
@@ -187,10 +195,8 @@ effects::effectsTheme()
 # [1] 1
 # 
 # attr(,"current")$superpose.line$col
-#          blue        orange   bluishgreen    vermillion 
-#     "#0072B2"     "#E69F00"     "#009E73"     "#D55E00" 
-#       skyblue        yellow reddishpurple 
-#     "#56B4E9"     "#F0E442"     "#CC79A7" 
+# [1] "#0072B2" "#E69F00" "#009E73" "#D55E00" "#56B4E9"
+# [6] "#F0E442" "#CC79A7"
 # 
 # attr(,"current")$superpose.line$lty
 # [1] 1 1 1 1 1 1 1
@@ -206,7 +212,7 @@ lattice::trellis.par.set(effectsTheme())
 plot(allEffects(mod.cowles), main="Default settings")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
+<img src="README_files/figure-gfm/effect-theme-1.png" width="100%" />
 
 ``` r
 
@@ -214,7 +220,7 @@ lattice::trellis.par.set(bw_theme())
 plot(allEffects(mod.cowles), main="bw_theme")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-5-2.png" width="100%" />
+<img src="README_files/figure-gfm/effect-theme-2.png" width="100%" />
 
 ``` r
 lattice::trellis.par.set(
@@ -245,7 +251,7 @@ plot(allEffects(mod.cowles), main="händisch" ,
      )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
+<img src="README_files/figure-gfm/axis-padding-1.png" width="100%" />
 
 ``` r
 
@@ -286,7 +292,7 @@ update(
   )
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-8-1.png" width="100%" />
+<img src="README_files/figure-gfm/manual-1.png" width="100%" />
 
 ## Usage
 
@@ -312,12 +318,12 @@ mtcars2 <- mtcars
 mtcars$vs <- factor(mtcars$vs)
 
 #get_opt("prozent")
-mtcars %>% Tbll_desc (
+mtcars |> Tbll_desc (
   mpg[mean],
   cyl[median,0],
   disp,
   vs
-) %>% Output("Hallo")
+) |> Output("Hallo")
 ```
 
 <table class="gmisc_table" style="border-collapse: collapse; padding-left: .5em; padding-right: .2em;">

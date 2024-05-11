@@ -36,6 +36,11 @@ reset_lattice(), set_lattice()
 
 * Output: which_output()
 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/stp25stat2)](https://CRAN.R-project.org/package=stp25stat2)
+<!-- badges: end -->
+
 ## Default stp25 Options
 
     language = "de"
@@ -73,13 +78,13 @@ reset_lattice(), set_lattice()
 ```{r simple-table, echo=FALSE}
 require(stp25stat2)
 
-mtcars %>% Tbll_desc (
+mtcars |> Tbll_desc (
   mpg[mean],
   cyl[median],
 ####  "Hallo",
   disp,
   vs[freq]
-) %>% kable()
+) |> kable()
 
 ```
 
@@ -262,12 +267,12 @@ mtcars2 <- mtcars
 mtcars$vs <- factor(mtcars$vs)
 
 #get_opt("prozent")
-mtcars %>% Tbll_desc (
+mtcars |> Tbll_desc (
   mpg[mean],
   cyl[median,0],
   disp,
   vs
-) %>% Output("Hallo")
+) |> Output("Hallo")
 
 ```
 
