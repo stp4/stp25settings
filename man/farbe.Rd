@@ -10,6 +10,7 @@ farbe(
     "sex", "sex.mf", "bw", "grays", "likert", "Reds", "Blues", "Greens", "Blues",
     "Greys", "Oranges", "Purples"),
   n = 5,
+  include.names = FALSE,
   ...
 )
 
@@ -20,6 +21,8 @@ likert_col(n = 5, name = "RdBl", middle = mean(1:n), middle.color = "gray90")
 "dark", "pastel","cb", "sex","sex.mf","brewer","bw","grays"}
 
 \item{n}{Number of different colors in the palette, minimum 3, maximum depending on palette}
+
+\item{include.names}{logical. Farb-namen machen problebe mit ggplot}
 
 \item{...}{an Likert_col name, middle, middle.color}
 

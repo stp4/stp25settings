@@ -26,6 +26,7 @@
 #' @param type   "pirat", "ggplot",
 #' "dark", "pastel","cb", "sex","sex.mf","brewer","bw","grays"
 #' @param n Number of different colors in the palette, minimum 3, maximum depending on palette
+#' @param include.names logical. Farb-namen machen problebe mit ggplot
 #' @param ... an Likert_col name, middle, middle.color
 #'
 #' @return character-string
@@ -53,6 +54,7 @@ farbe <- function(
       "sex", "sex.mf", "bw", "grays", "likert",
       "Reds", "Blues", "Greens","Blues", "Greys", "Oranges", "Purples"),
     n = 5,
+    include.names=FALSE,
     ...) {
 
   cbPalette <- c(
@@ -82,7 +84,7 @@ farbe <- function(
   )
 
   type <-  match.arg(type, several.ok = FALSE)
-  switch(
+ col <-  switch(
     type,
     pirat = c(
       blue1     = "#0C5BB0FF",
@@ -137,6 +139,9 @@ farbe <- function(
 
     brewer_pal2(n, type )
   )
+
+ if(!include.names) as.character(col)
+ else col
 
 }
 
